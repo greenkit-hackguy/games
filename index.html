@@ -46,21 +46,26 @@
     </div>
 
     <script>
-        // Fullscreen function
+        // Fullscreen function to open the game in a new tab
         function openFullscreen() {
-            var iframe = document.getElementById('game-player');
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.mozRequestFullScreen) { // Firefox
-                iframe.mozRequestFullScreen();
-            } else if (iframe.webkitRequestFullscreen) { // Chrome and Safari
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) { // IE/Edge
-                iframe.msRequestFullscreen();
+            // Open the game URL in a new tab and make it fullscreen
+            var gameUrl = "https://ext.minijuegosgratis.com/guerrillas-io/game.html?mp_api_as3_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fas3%2Flatest.swf&mp_api_as3_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-as%2F&mp_api_id=6961&mp_api_js_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fjs%2Flatest.js&mp_api_js_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-js%2F&mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=249057&mp_game_uid=guerrillas-io&mp_game_url=https%3A%2F%2Fwww.miniplay.com%2Fembed%2Fguerrillas-io&mp_int=1&mp_locale=en_US&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_site_name=miniplay.com&mp_site_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_timezone=America%2FNew_York&mp_view_type=&mini_signature=441fa2e75d2e65409bec926bf249531a";
+            var newWindow = window.open(gameUrl, "_blank");
+
+            if (newWindow) {
+                // Try to make the new tab go fullscreen
+                if (newWindow.document.documentElement.requestFullscreen) {
+                    newWindow.document.documentElement.requestFullscreen();
+                } else if (newWindow.document.documentElement.mozRequestFullScreen) { // Firefox
+                    newWindow.document.documentElement.mozRequestFullScreen();
+                } else if (newWindow.document.documentElement.webkitRequestFullscreen) { // Chrome and Safari
+                    newWindow.document.documentElement.webkitRequestFullscreen();
+                } else if (newWindow.document.documentElement.msRequestFullscreen) { // IE/Edge
+                    newWindow.document.documentElement.msRequestFullscreen();
+                }
             }
         }
     </script>
 
 </body>
 </html>
-

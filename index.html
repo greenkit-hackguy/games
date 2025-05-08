@@ -1,69 +1,66 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GUERRILLAS.IO - Free Online Game</title>
     <style>
-        body {
-            height: 100vh;
+        body, html {
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            padding: 0;
+            height: 100%;
         }
         #embed-iframe-wrapper {
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             position: relative;
         }
         #game-player {
             width: 100%;
             height: 100%;
-        }
-        /* Fullscreen button styling */
-        button {
-            padding: 15px 30px;
-            background-color: #4a148c;
-            color: white;
             border: none;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 1000;
+        }
+        .fullscreen-button {
             position: absolute;
             top: 10px;
-            left: 10px;
+            right: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
             border-radius: 5px;
+            z-index: 10;
         }
-        button:hover {
-            background-color: #7b1fa2;
+        .fullscreen-button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <!-- Fullscreen Button -->
-    <button onclick="openFullscreen()">Fullscreen</button>
 
     <div id="embed-iframe-wrapper">
-        <iframe id="game-player" width="100%" height="100%" frameborder="0" scrolling="no"
-                allow="autoplay; fullscreen; camera; clipboard-read; clipboard-write;"
-                sandbox="allow-pointer-lock allow-same-origin allow-scripts allow-modals"
-                src="https://ext.minijuegosgratis.com/guerrillas-io/game.html?mp_api_as3_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fas3%2Flatest.swf&mp_api_as3_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-as%2F&mp_api_id=6961&mp_api_js_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fjs%2Flatest.js&mp_api_js_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-js%2F&mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=249057&mp_game_uid=guerrillas-io&mp_game_url=https%3A%2F%2Fwww.miniplay.com%2Fembed%2Fguerrillas-io&mp_int=1&mp_locale=en_US&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_site_name=miniplay.com&mp_site_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_timezone=America%2FNew_York&mp_view_type=&mini_signature=441fa2e75d2e65409bec926bf249531a">
-        </iframe>
+        <iframe id="game-player" src="https://ext.minijuegosgratis.com/guerrillas-io/game.html?mp_api_as3_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fas3%2Flatest.swf&mp_api_as3_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-as%2F&mp_api_id=6961&mp_api_js_url=https%3A%2F%2Fssl.minijuegosgratis.com%2Flechuck%2Fjs%2Flatest.js&mp_api_js_url_bck=https%3A%2F%2Fapi.minijuegos.com%2Flechuck%2Fclient-js%2F&mp_assets=https%3A%2F%2Fs2.minijuegosgratis.com%2F&mp_embed=0&mp_game_id=249057&mp_game_uid=guerrillas-io&mp_game_url=https%3A%2F%2Fwww.miniplay.com%2Fembed%2Fguerrillas-io&mp_int=1&mp_locale=en_US&mp_player_type=IFRAME&mp_site_https_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_site_name=miniplay.com&mp_site_url=https%3A%2F%2Fwww.miniplay.com%2F&mp_timezone=America%2FNew_York&mp_view_type=&mini_signature=441fa2e75d2e65409bec926bf249531a" allowfullscreen></iframe>
+        <button class="fullscreen-button" onclick="openFullscreen()">Go Fullscreen</button>
     </div>
 
     <script>
         // Fullscreen function
         function openFullscreen() {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
-                document.documentElement.mozRequestFullScreen();
-            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome and Safari
-                document.documentElement.webkitRequestFullscreen();
-            } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-                document.documentElement.msRequestFullscreen();
+            var iframe = document.getElementById('game-player');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome and Safari
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
             }
         }
     </script>
+
 </body>
 </html>
+
